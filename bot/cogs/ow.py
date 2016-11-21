@@ -2,8 +2,8 @@ from discord.ext import commands
 from sqlalchemy.orm import sessionmaker
 from models import Battletags, db_connect, create_battletag_table
 from utils import get_average_stats, get_most_stats, \
-                      most_played, most_played_comp, get_average_comp, \
-                      get_most_comp, get_hook, get_dva
+                  most_played, most_played_comp, get_average_comp, \
+                  get_most_comp, get_hook, get_dva
 
 
 ERROR = "Could not retrieve stats. Battletag is Case Sensitive\n" \

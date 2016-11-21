@@ -12,6 +12,7 @@ and choose your server. If you DO NOT have **Manage Server** permission your cho
 #### Overwatch:
 - `!b` *battletag* - MUST BE CALLED TO ACCESS OW COMMANDS
 - `!cb` *battletag* - Change/Fix your battletag entry
+- `!playcom` - Most Played Competitive Heroes
 - `!play` - Most Played Heroes
 - `!averagecom` - Average Competitive Stats
 - `!average` - Average Quickplay Stats

@@ -28,8 +28,8 @@ def get_average_comp(battletag):
 def get_most_stats(battletag):
     """ Gather most in game/best Overwatch stats """
 
-    most = Overwatch(battletag=battletag, mode='quickplay',
-                        hero='all', filter='best')
+    most = Overwatch(battletag=battletag, mode='quickplay', hero='all',
+                     filter='best')
     results = most.get_results()
     descr, stats = parse(results)
 
@@ -40,8 +40,8 @@ def get_most_stats(battletag):
 def get_most_comp(battletag):
     """ Gather most in game/best competitive Overwatch stats """
 
-    most = Overwatch(battletag=battletag, mode='competitive',
-                        hero='all', filter='best')
+    most = Overwatch(battletag=battletag, mode='competitive', hero='all',
+                     filter='best')
     results = most.get_results()
     descr, stats = parse(results)
 
@@ -52,8 +52,20 @@ def get_most_comp(battletag):
 def most_played(battletag):
     """ Gather the data for heroes most played """
 
-    play = Overwatch(battletag=battletag, mode='quickplay',
-                        hero='all', filter='played')
+    play = Overwatch(battletag=battletag, mode='quickplay', hero='all',
+                     filter='played')
+    results = play.get_results()
+    descr, stats = parse(results)
+
+    for i in range(len(descr)):
+        yield descr[i], stats[i]
+
+
+def most_played_comp(battletag):
+    """ Gather the data for heroes most played in comp """
+
+    play = Overwatch(battletag=battletag, mode='competitive', hero='all',
+                     filter='played')
     results = play.get_results()
     descr, stats = parse(results)
 
@@ -64,8 +76,8 @@ def most_played(battletag):
 def get_hook(battletag):
     """ Gathers those mad hook stats"""
 
-    roadhog = Overwatch(battletag=battletag, mode='quickplay',
-                        hero='roadhog', filter='hero specific')
+    roadhog = Overwatch(battletag=battletag, mode='quickplay', hero='roadhog',
+                        filter='hero specific')
     results = roadhog.get_results()
     descr, stats = parse(results)
 
@@ -76,8 +88,8 @@ def get_hook(battletag):
 def get_dva(battletag):
     """ Gather Dva Self-Destruct Stats"""
 
-    dva = Overwatch(battletag=battletag, mode='quickplay',
-                        hero='dva', filter='miscellaneous')
+    dva = Overwatch(battletag=battletag, mode='quickplay', hero='dva',
+                    filter='miscellaneous')
     results = dva.get_results()
     descr, stats = parse(results)
 
@@ -101,9 +113,3 @@ def parse(value_list):
         nums.append(value_list[j])
 
     return text, nums
-
-
-def switch(item):
-    """Reformat battletag to be used in a URL"""
-
-    return item.replace('#', '-')

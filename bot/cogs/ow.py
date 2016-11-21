@@ -2,8 +2,8 @@ from discord.ext import commands
 from sqlalchemy.orm import sessionmaker
 from models import Battletags, db_connect, create_battletag_table
 from utils import get_average_stats, get_most_stats, \
-                      most_played, get_average_comp, get_most_comp, \
-                      get_hook, get_dva
+                      most_played, most_played_comp, get_average_comp, \
+                      get_most_comp, get_hook, get_dva
 
 
 ERROR = "Could not retrieve stats. Battletag is Case Sensitive\n" \
@@ -160,7 +160,7 @@ class OverWatch:
 
     @commands.command(pass_context=True)
     async def play(self, ctx):
-        """ Retrieves Heroes Most Played Stats """
+        """ Retrieves Most Played Heroes Stats """
         raw_user = ctx.message.author
         user = str(raw_user)
         try:
@@ -171,6 +171,27 @@ class OverWatch:
 
                 await self.bot.say(battletag + '\n' + '---------------')
                 await self.parse_gen(most_played(battletag))
+
+            else:
+                raise Exception
+
+        except Exception:
+            await self.bot.say("Error: Battletag is not registered\n"
+                               "Use !b 'your_battletag' command to log it")
+
+    @commands.command(pass_context=True)
+    async def playcom(self, ctx):
+        """ Retrieves Most Played Competitive Stats """
+        raw_user = ctx.message.author
+        user = str(raw_user)
+        try:
+            record = session.query(Battletags).filter_by(disc_name=user).first()
+
+            if record:
+                battletag = record.battletag
+
+                await self.bot.say(battletag + '\n' + '---------------')
+                await self.parse_gen(most_played_comp(battletag))
 
             else:
                 raise Exception

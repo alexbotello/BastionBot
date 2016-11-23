@@ -1,10 +1,7 @@
 from discord.ext import commands
 from sqlalchemy.orm import sessionmaker
 from models import Battletags, db_connect, create_battletag_table
-from utils import get_average_stats, get_most_stats, \
-                  most_played, most_played_comp, get_average_comp, \
-                  get_most_comp, get_hook, get_dva
-
+from utils import *
 
 ERROR = "Could not retrieve stats. Battletag is Case Sensitive\n" \
         "Use !cb 'your_battletag' command to fix your Battletag"
@@ -56,7 +53,6 @@ class OverWatch:
             session.commit()
 
             await self.bot.say("Battletag Added")
-
         else:
             await self.bot.say("Your Battletag is already logged")
 
@@ -84,7 +80,6 @@ class OverWatch:
 
             if record:
                 battletag = record.battletag
-
                 await self.bot.say(battletag + '\n' + '---------------')
                 await self.parse_gen(get_average_stats(battletag))
 
@@ -105,7 +100,6 @@ class OverWatch:
 
             if record:
                 battletag = record.battletag
-
                 await self.bot.say(battletag + '\n' + '---------------')
                 await self.parse_gen(get_average_comp(battletag))
 
@@ -126,7 +120,6 @@ class OverWatch:
 
             if record:
                 battletag = record.battletag
-
                 await self.bot.say(battletag + '\n' + '---------------')
                 await self.parse_gen(get_most_stats(battletag))
 
@@ -147,7 +140,6 @@ class OverWatch:
 
             if record:
                 battletag = record.battletag
-
                 await self.bot.say(battletag + '\n' + '---------------')
                 await self.parse_gen(get_most_comp(battletag))
 
@@ -168,7 +160,6 @@ class OverWatch:
 
             if record:
                 battletag = record.battletag
-
                 await self.bot.say(battletag + '\n' + '---------------')
                 await self.parse_gen(most_played(battletag))
 
@@ -189,7 +180,6 @@ class OverWatch:
 
             if record:
                 battletag = record.battletag
-
                 await self.bot.say(battletag + '\n' + '---------------')
                 await self.parse_gen(most_played_comp(battletag))
 
@@ -210,7 +200,6 @@ class OverWatch:
 
             if record:
                 battletag = record.battletag
-
                 await self.bot.say(battletag + '\n' + '---------------')
                 await self.parse_gen(get_hook(battletag))
 
@@ -231,7 +220,6 @@ class OverWatch:
 
             if record:
                 battletag = record.battletag
-
                 await self.bot.say(battletag + '\n' + '---------------')
                 await self.parse_gen(get_dva(battletag))
 

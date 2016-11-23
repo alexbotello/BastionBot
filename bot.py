@@ -40,7 +40,6 @@ async def on_ready():
 @bot.event
 async def on_member_join(member):
     """ Notifies when new member has joined the server"""
-
     await bot.send_message(member.server, "{} joined {}".format(member,
                                                                 member.joined_at))
 

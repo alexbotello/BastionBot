@@ -89,6 +89,3 @@ ENV/
 .ropeproject
 
 .idea
-Procfile
-runtime.txt
-secret.py

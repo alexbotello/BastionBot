@@ -101,13 +101,10 @@ def parse(value_list):
     """ Separates data from a list and returns two lists """
     text = []
     nums = []
-
     length = len(value_list)
-
     # Separate all text into a new list
     for i in range(0, length, 2):
         text.append(value_list[i])
-
     # Separate all numbers into a new list
     for j in range(1, length, 2):
         nums.append(value_list[j])

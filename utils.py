@@ -1,3 +1,5 @@
+import requests
+from bs4 import BeautifulSoup
 from overwatch import Overwatch
 
 
@@ -95,6 +97,16 @@ def get_dva(battletag):
 
     for i in range(len(descr)):
         yield descr[i], stats[i]
+
+def get_sr(battletag):
+    """ Grabs Skill Rating Image URL"""
+
+    response = requests.get('https://playoverwatch.com/en-us/career/pc/us/' + battletag.replace("#", '-'))
+    soup = BeautifulSoup(response.content, 'html.parser')
+    block = soup.find('div', {'class': 'competitive-rank'})
+    image = block.find('img')['src']
+    return image
+
 
 
 def parse(value_list):

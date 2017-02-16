@@ -10,9 +10,10 @@ def db_connect():
     Performs database connection
     Returns sqlalchemy engine instance
     """
-    return create_engine('postgres://fbcmeskynsvati:aURfAdENt6-kumO0j224GuXRWH'
-                         '@ec2-54-221-235-135.compute-1.amazonaws.com'
-                         ':5432/d2cc1tb2t1iges', echo=False)
+    return create_engine('postgres://fcvxvbdsuotypy:a3b010cca1fa4e6949ff39c11c6'
+                         'e0b9edf9ce67a650535436dc349ba29b8c751@ec2-54-243-253-'
+                         '17.compute-1.amazonaws.com:5432/'
+                         'dfl66jjoa0etqc', echo=False)
 
 
 def create_battletag_table(engine):

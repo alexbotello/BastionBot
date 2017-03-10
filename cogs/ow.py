@@ -230,17 +230,6 @@ class OverWatch:
             await self.bot.say("Error: Battletag is not registered\n"
                                "Use !b 'your_battletag' command to log it")
 
-    #@commands.command(pass_context=True)
-    #async def sr(self, ctx):
-        #"""Retrieves Skill Rating"""
-        #channel = ctx.message.channel
-        #raw_user = ctx.message.author
-        #user = str(raw_user)
-        #image = get_sr("ItwasLuck#1682")
-        #try:
-            #record = session.query(Battletags).filter_by(disc_name=user).first()
 
-            #if record:
-                
 def setup(bot):
     bot.add_cog(OverWatch(bot))
